@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "119201609756",
+    "project_id": "poonam-2c192",
+    "storage_bucket": "poonam-2c192.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119201609756:android:6932e31de2b70ddffb87d9",
+        "android_client_info": {
+          "package_name": "schemas.android.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxsgR-_jzielNSDw2QUrz8eHk58oVnxP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
