@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'arti.dart';
 import 'drawer_items.dart';
 import 'firebase_options.dart';
+
 import 'parayan.dart';
 import 'phal.dart';
 import 'sidhamangal.dart';
@@ -26,6 +27,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 
 
+
 // void main() => runApp(const MyApp());
 void main() async {
   runApp(const MyApp());
@@ -35,8 +37,9 @@ void main() async {
   final fcmToken = await FirebaseMessaging.instance.getToken();
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
   log("FCMToken $fcmToken");
-}
 
+
+}
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -63,20 +66,26 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+
+
+
   @override
   initState() {
     super.initState();
-    if (kDebugMode) {
+
+
       print('New version available');
-    }
+
+
+
     InAppUpdate.checkForUpdate().then((info) {
       setState(() {
         _updateInfo = info;
         if (Platform.isAndroid) {
           if (_updateInfo.flexibleUpdateAllowed == true) {
-            if (kDebugMode) {
+
               print('Hey Update');
-            }
+
 
             InAppUpdate.startFlexibleUpdate().then((_) {
               setState(() {
@@ -179,40 +188,53 @@ class _MainPageState extends State<MainPage> {
 
 
 
-  Future<bool>onPressed() async {
+  Future<bool> onPressed() async {
     DateTime currentTime = DateTime.now();
 
     bool backButton = currentTime.difference(backbuttonpressedTime) > const Duration(seconds: 2);
 
     if (backButton) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('ऍपमधून बाहेर पडण्यासाठी बॅक बटण 3 वेळा दाबा'),
+        ),
+      );
       backbuttonpressedTime = currentTime;
       return false;
     } else {
-      await showDialog(
+      // Show the exit confirmation dialog
+      bool exitConfirmed = await showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Exit Confirmation'),
-          content: const Text('Are you sure you want to exit?'),
+          title: const Text('ऍपमधून बाहेर पडा'),
+          content: const Text('तुमची खात्री आहे की तुम्ही ऍपमधून बाहेर पडू इच्छिता?'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(false); // Don't exit
               },
-              child: const Text('No'),
+              child: const Text('नाही '),
             ),
             TextButton(
               onPressed: () {
-                exit(0); // Exit
+                Navigator.of(context).pop(true); // Exit
               },
-              child: const Text('Yes'),
+              child: const Text('हो '),
             ),
           ],
         ),
       );
+
+      // Exit if the user confirmed
+      if (exitConfirmed) {
+        exit(0);
+      }
+
       return false; // Do not exit immediately after showing the dialog
     }
-
   }
+
+
 
 
   Widget homePage() {
@@ -271,46 +293,7 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
-  // Widget homePage() {
-  //   return PopScope(
-  //
-  //     child: GestureDetector(
-  //       onTap: closeDrawer,
-  //       onHorizontalDragStart: (details) => isDragging = true,
-  //       onHorizontalDragUpdate: (details) {
-  //         if (!isDragging) return;
-  //         const delta = 1;
-  //         if (details.delta.dx > delta) {
-  //           openDrawer();
-  //         } else if (details.delta.dx < -delta) {
-  //           closeDrawer();
-  //         }
-  //         isDragging = false;
-  //       },
-  //       child: AnimatedContainer(
-  //         duration: const Duration(milliseconds: 250),
-  //         transform: Matrix4.translationValues(xOffset, yOffset, 0)..scale(scaleFactor),
-  //         decoration: const BoxDecoration(boxShadow: [
-  //           BoxShadow(
-  //             color: Color.fromRGBO(255, 160, 0, 0),
-  //             blurRadius: 30,
-  //             offset: Offset(0, 0),
-  //             spreadRadius: 2.0,
-  //           )
-  //         ]),
-  //         child: AbsorbPointer(
-  //           absorbing: isDrawerOpen,
-  //           child: ClipRRect(
-  //             borderRadius: BorderRadius.circular((isDrawerOpen) ? 20 : 0),
-  //             child: Container(
-  //               child: getDrawerPage(),
-  //             ),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
+
 
 
   Widget getDrawerPage() {
@@ -334,6 +317,7 @@ class _MainPageState extends State<MainPage> {
         return Abhay(openDrawer: openDrawer);
       case DrawerItems.arti:
         return Arti(openDrawer: openDrawer);
+
 
       case DrawerItems.home:
         return ChapterScreen(
@@ -363,6 +347,7 @@ class _MainPageState extends State<MainPage> {
                 '$i',
               )),
           openDrawer: openDrawer,
+
         );
 
     }

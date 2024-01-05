@@ -143,12 +143,6 @@ class _DetailScreenState extends State<DetailScreen> {
                           fontFamily: 'Varun'),
                       textAlign: TextAlign.center),
 
-                  // Image.asset(widget.todo.imageName,
-                  //   // Replace with the path to your image asset
-                  //   width: 50, // Set the desired width of the image
-                  //   height: 50, // Set the desired height of the image
-                  //
-                  // ),
 
                   const SizedBox(height: 16),
                   Text(widget.todo.subtitle,
@@ -178,19 +172,28 @@ class _DetailScreenState extends State<DetailScreen> {
                 ],
               ),
             ),
+
             floatingActionButton: FloatingActionButton(
-              tooltip: 'Bookmark This Chapter',
+              tooltip: 'अध्याय करा',
               onPressed: () {
-                  setBookmark(int.parse((widget.todo.index).toString()));
+                int chapterIndex = int.parse((widget.todo.index).toString());
+                setBookmark(chapterIndex);
+
+                // Show a SnackBar with "Bookmarked" message.
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('अध्याय बुकमार्क केला'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
               },
-
-
               backgroundColor: Colors.orange,
               child: const Icon(
                 Icons.bookmark_border,
                 color: Colors.white,
               ),
-            ),
+            )
+
 
         ));
   }

@@ -3,28 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDCf6f78AL7_NmAjaBhl7F_M-S1tuVu9Yw</string>
+	<string>AIzaSyDR_m7LPe0doBnrsFkRI9Fc3qm4uFdBNRg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1098524233550</string>
+	<string>315652197249</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.shripadShrivallabh</string>
+	<string>com.shripadshrivallabh.charitramrut</string>
 	<key>PROJECT_ID</key>
-	<string>shripad-shrivallabh</string>
+	<string>shripad-shrivallabh-new</string>
 	<key>STORAGE_BUCKET</key>
-	<string>shripad-shrivallabh.appspot.com</string>
+	<string>shripad-shrivallabh-new.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1098524233550:ios:2cec9b709ab971d51d581f</string>
+	<string>1:315652197249:ios:1cedefe0cce4d05e5a7680</string>
 </dict>
 </plist>

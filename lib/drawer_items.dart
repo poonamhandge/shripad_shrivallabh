@@ -7,7 +7,9 @@ class DrawerItems {
       icon: Icons.import_contacts);
   static const stotra = DrawerItem(
       title: 'श्रीपाद श्रीवल्लभ स्तोत्रम् ', icon: Icons.text_snippet);
-
+  static const arti =
+  DrawerItem(title: 'आरती ', icon: Icons.filter_vintage_sharp);
+  // festival
   static const sidhhamangal =
   DrawerItem(title: 'सिद्धमंगलस्तोत्र ', icon: Icons.spa);
   static const parayan =
@@ -17,17 +19,20 @@ class DrawerItems {
   DrawerItem(title: 'घोरकष्टोद्धरणस्तोत्रम्', icon: Icons.emoji_emotions);
   static const abhay =
   DrawerItem(title: 'अभय वचने', icon: Icons.brightness_5_outlined);
-  static const arti =
-  DrawerItem(title: 'आरती ', icon: Icons.brightness_5_outlined);
+
+
+
   static final List<DrawerItem> all = [
     home,
     stotra,
+    arti,
     sidhhamangal,
     uddhar,
     abhay,
     parayan,
     phal,
-    arti,
+
+
   ];
 }
 

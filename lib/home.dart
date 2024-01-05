@@ -1,68 +1,4 @@
-// import 'package:flutter/material.dart';
-//
-//
-//
-// class Home extends StatefulWidget {
-//   const Home({super.key});
-//
-//
-//   @override
-//   State<Home> createState() => _HomeState();
-// }
-//
-// class _HomeState extends State<Home> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.orange[100],
-//       appBar: AppBar(
-//         backgroundColor: Colors.orange[400],
-//         leading: GestureDetector(
-//             onTap: () {
-//
-//             },
-//             child: const Icon(
-//               Icons.menu, // add custom icons also
-//             )),
-//         title: const Text('श्रीपाद श्रीवल्लभ चरित्रामृत',
-//             style: TextStyle(fontWeight: FontWeight.bold)),
-//       ),
-//       body: ListView.builder(
-//
-//         itemBuilder: (context, index) {
-//           return Card(
-//               child: ListTile(
-//
-//                 title: const Text('श्रीपाद श्रीवल्लभ चरित्रामृत',
-//                     style: TextStyle(
-//                         fontSize: 18,
-//                         fontWeight: FontWeight.bold,
-//                         fontFamily: 'Varun')),
-//                 subtitle: Text('श्रीपाद श्रीवल्लभ चरित्रामृत',
-//                     style: TextStyle(
-//                         fontSize: 20,
-//                         fontWeight: FontWeight.bold,
-//                         color: Colors.deepOrangeAccent[700],
-//                         fontFamily: 'Varun')),
-//                 // When a user taps the ListTile, navigate to the DetailScreen.
-//
-//               ));
-//         },
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         tooltip: ('Open Bookmarked Page'),
-//         onPressed: () {  },
-//         child: const Icon(
-//           Icons.bookmark,
-//           color: Colors.white,
-//         ),
-//
-//
-//
-//       ),
-//     );
-//   }
-// }
+
 
 
 import 'package:flutter/material.dart';
@@ -123,76 +59,89 @@ class _ChapterScreenState extends State<ChapterScreen> {
         title: const Text('श्रीपाद श्रीवल्लभ चरित्रामृत',
             style: TextStyle(fontWeight: FontWeight.bold)),
       ),
-      body: ListView.builder(
-        itemCount: widget.todos.length,
-        itemBuilder: (context, index) {
-          bool isRead = readState[index] ?? false;
-          return Card(
-            surfaceTintColor:Colors.orangeAccent ,
-              color: Colors.orange[50] ,
-              child: ListTile(
-                leading: ClipOval(
-                  child: Image.asset(
-                    'assets/appicon1.png',
-                    fit: BoxFit.cover,
-                    width: 60, // Adjust the width as needed
-                    height: 60, // Adjust the height as needed
-                  ),
-                ),
 
-                title: Text(widget.todos[index].title,
-                    style: const TextStyle(
+        body: ListView.builder(
+          itemCount: widget.todos.length,
+          itemBuilder: (context, index) {
+            bool isRead = readState[index] ?? false;
+            return Padding(
+              padding: const EdgeInsets.all(0.0),
+              child: Card(
+                surfaceTintColor: Colors.orangeAccent,
+                color: Colors.orange[50],
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 5.0),
+
+
+                  leading: const CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage('assets/appicon1.png'),
+                  ),
+                  title: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.100,
+
+                    child: Text(
+                      widget.todos[index].title,
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Varun')),
-
-                subtitle: Text(widget.todos[index].subtitle,
-                    style: TextStyle(
+                        fontFamily: 'Varun',
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  subtitle: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.100,
+                    child: Text(
+                      widget.todos[index].subtitle,
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-
                         color: Colors.deepOrangeAccent[700],
-                        fontFamily: 'Varun')
-                ),
-                // When a user taps the ListTile, navigate to the DetailScreen.
-                onTap: () {
-
-                  Navigator.push(
-                    context,
-
-                    MaterialPageRoute(
-
-
-                      builder: (context) => DetailScreen(todo: widget.todos[index]
+                        fontFamily: 'Varun',
                       ),
+                      // maxLines: 4,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(todo: widget.todos[index]),
+                      ),
+                    );
+                  },
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.check,
+                      color: isRead ? Colors.green : Colors.grey,
+                      size: 20.0,
 
                     ),
-                  );
-                },
-                trailing: IconButton(
-                  icon: Icon(
-                    Icons.check, // Use a different icon for "Mark as Read"
-                    color: isRead ? Colors.lime[900] : Colors.white,
+                    onPressed: () {
+                      setState(() {
+                        isRead = !isRead;
+                        readState[index] = isRead;
+                        prefs.setBool('read_$index', isRead);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(isRead
+                                ? 'वाचले म्हणून चिन्हांकित केले'
+                                : 'न वाचलेले म्हणून चिन्हांकित केले'),
+                            duration: const Duration(seconds: 2),
+                          ),
+                        );
+                      });
+                    },
                   ),
-                  onPressed: () {
-
-                    setState(() {
-                      // Toggle the read state when the user taps the IconButton.
-                      isRead = !isRead;
-                      readState[index] = isRead;
-
-                      // Save the read state in SharedPreferences.
-                      prefs.setBool('read_$index', isRead);
-                    });
-
-                  },
                 ),
-              ));
-        },
-      ),
+              ),
+            );
+          },
+        ),
 
       floatingActionButton: FloatingActionButton(
-        tooltip: ('Open Bookmarked Page'),
+        tooltip: ('बुकमार्क केलेला अध्याय उघडा'),
           backgroundColor: Colors.orange,
           child: const Icon(
 
@@ -210,6 +159,13 @@ class _ChapterScreenState extends State<ChapterScreen> {
               builder: (context) =>
                   DetailScreen(
                       todo: widget.todos[prefs1.getInt('bookmarked') ?? 0]),
+
+            ),
+          );
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('बुकमार्क केलेला अध्याय उघडला'),
             ),
           );
           // },

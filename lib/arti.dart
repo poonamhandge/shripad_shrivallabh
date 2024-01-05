@@ -116,7 +116,7 @@ class _Arti extends State<Arti> {
             child: ListView(children: <Widget>[
 
               Text(
-                  '1) माझ्या चरित्राचे पारायण होत असलेल्या प्रत्येक स्थळी मी सूक्ष्म रूपात असतो.',
+                  '॥श्री गणेशायनम:॥ॐद्रांदत्तात्रेयायनमः॥',
                   style: TextStyle(
                       fontSize: _fsizeMangal,
                       fontWeight: FontWeight.bold,
@@ -128,7 +128,7 @@ class _Arti extends State<Arti> {
                 height: 15,
               ),
               Text(
-                  '2) मनो वाक् काय कर्मणा मला समर्पित असलेल्या साधकांचा मी डोळयात तेल घालून संभाळ करतो.',
+                  '॥श्री गुरुवे नम:॥ श्रीपादराजं शरणं प्रपद्ये ॥ ',
                   style: TextStyle(
                       fontSize: _fsizeMangal,
                       fontWeight: FontWeight.bold,
@@ -139,7 +139,7 @@ class _Arti extends State<Arti> {
                 height: 15,
               ),
               Text(
-                  '3) श्री पीठीकापुरम मध्ये मी प्रतिदिन मध्याह्न काळी भिक्षा स्विकारतो. माझे येणे दैव रहस्य आहे.',
+                  'गोदातट पवित्र पिठीकापूर स्थान ।\n सगुण रूपाने करिसी जगताला धन्य ।।\n आपळ - सुमती - बापन्नासी भाससी तू सान ।\n निर्गुण रूपे भूषविसी ब्रह्मांडाचे आसन ।।\n जयदेव जयदेव जय सदगुरु दत्ता हो श्री सदगुरु दत्ता ।\n श्रीपाद श्रीवल्लभ परब्रह्म रूपा जयदेव जयदेव ।।१।।',
                   style: TextStyle(
                       fontSize: _fsizeMangal,
                       fontWeight: FontWeight.bold,
@@ -150,7 +150,7 @@ class _Arti extends State<Arti> {
                 height: 15,
               ),
               Text(
-                  '4) सतत माझे ध्यान करणाऱ्यांचे कर्म, ते कितीही जन्मजन्मांतरीचे असले तरी मी ते भस्म करून टाकतो.',
+                  'संकल्पासी कथूनी तू कार्यासी धरिसी ।\n मुनिजन - साधू - भक्ता निर्भय तू करिसी ।।\n खल - कली - कामी जनांही तू उद्धरसी ।\n अभिनव लीले पातक कर्मा नाशविसी ।। जयदेव ० ।।२।।',
                   style: TextStyle(
                       fontSize: _fsizeMangal,
                       fontWeight: FontWeight.bold,
@@ -161,7 +161,7 @@ class _Arti extends State<Arti> {
                 height: 15,
               ),
               Text(
-                  '5) (अन्न हेच परब्रह्म-अन्नमोरामचंद्राय) अन्नासाठी तळमळणाऱ्यांना अन्न दिल्यास, मी त्या दात्यास नक्कीच प्रसन्न होतो.',
+                  'अंध पंगु भ्रात्यांना आरोग्य ते दिधले ।\n कुरवपुरासी जाऊनी मुनिजन उद्धरिले ।।\n दर्शन मात्रे तुझिया अनेका संतत्व ते फळले । \nप्रिती तुजवर जडुनि कर्मांचे बंधन हे जळले ।। जयदेव ० ।।३।।',
                   style: TextStyle(
                       fontSize: _fsizeMangal,
                       fontWeight: FontWeight.bold,
@@ -172,7 +172,7 @@ class _Arti extends State<Arti> {
                 height: 15,
               ),
               Text(
-                  '6) मी श्रीपाद श्रीवल्लभ आहे. माझ्या भक्तांच्या घरी महालक्ष्मी तिच्या संपूर्ण कलेने प्रकाशित असते.',
+                  'नामानंदासी दाखविले चांडाळाचे रूप । \n वल्लभदासासी आणिले अरण्यातून सुखरूप ।। \n लोहकारासी रक्षुनी धरिसी गाडीवानाचे रूप । \n निमिषमात्रे करिसी रजकाचा तू नृप ।। जयदेव ० ।।४।।',
                   style: TextStyle(
                       fontSize: _fsizeMangal,
                       fontWeight: FontWeight.bold,
@@ -183,7 +183,7 @@ class _Arti extends State<Arti> {
                 height: 15,
               ),
               Text(
-                  '7) तुमचे अंत:करण शुध्द असले तर माझा कटाक्ष सदैव तुमच्यावर असतो.',
+                  'ब्रह्मा - विष्णू - महेश्वरांचा तू अनघा अवतार । \n निर्गुण ब्रह्म सनातनाचा अनंत आधार ।। \n नेती-नेती म्हणता पुढती पडले समस्त श्रुतीसार ।। \n दत्तदासावरी असावा तव कृपेचा कर ।। जयदेव ० ।।५।।',
                   style: TextStyle(
                       fontSize: _fsizeMangal,
                       fontWeight: FontWeight.bold,
@@ -193,62 +193,8 @@ class _Arti extends State<Arti> {
               const SizedBox(
                 height: 15,
               ),
-              Text(
-                  '8) तुम्ही ज्या देवता स्वरूपाची आराधना कराल, ज्या सद्गुरुंची उपासना कराल ती मलाचप्राप्त होईल.',
-                  style: TextStyle(
-                      fontSize: _fsizeMangal,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.deepOrangeAccent[700],
-                      fontFamily: 'Varun'),
-                  textAlign: TextAlign.center),
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                  '9) तुम्ही केलेली प्रार्थना मलाच पोचते. माझा अनुग्रह/आशिर्वाद तुम्ही आराधिलेल्या देवतेच्या स्वरूपाद्वारे, तुमच्या सद्गुरुद्वारे तुम्हाला प्राप्त होतो.',
-                  style: TextStyle(
-                      fontSize: _fsizeMangal,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.deepOrangeAccent[700],
-                      fontFamily: 'Varun'),
-                  textAlign: TextAlign.center),
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                  '10) श्रीपाद श्रीवल्लभ म्हणजे केवळ नामरूपच नाही. सकल देवता स्वरूप समस्त शक्तीचे अंश मिळून माझे विराट स्वरूप, अनुष्ठानाद्वारेच तुम्हाला समजू शकेल.',
-                  style: TextStyle(
-                      fontSize: _fsizeMangal,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.deepOrangeAccent[700],
-                      fontFamily: 'Varun'),
-                  textAlign: TextAlign.center),
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                  '11) श्रीपाद श्रीवल्लभ हा माझा संपूर्ण योग अवतार आहे. जे महायोगी, महासिध्दपुरुष माझे नित्य ध्यान करतात ते माझेच अंश आहेत.',
-                  style: TextStyle(
-                      fontSize: _fsizeMangal,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.deepOrangeAccent[700],
-                      fontFamily: 'Varun'),
-                  textAlign: TextAlign.center),
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                  '12) तुम्ही माझी आराधना केली तर मी तुम्हाला धर्ममार्गाचा, कर्म मार्गाचा बोध करतो. तुम्ही पतित होऊ नये म्हणून सदैव मी तुमचे रक्षण करतो.',
-                  style: TextStyle(
-                      fontSize: _fsizeMangal,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.deepOrangeAccent[700],
-                      fontFamily: 'Varun'),
-                  textAlign: TextAlign.center),
-              const SizedBox(
-                height: 15,
-              ),
-              Text('\n~~ ÞççÇHçço ÞççÇJçuuçYççb®çç pç³çpç³çkçÀçj Dçmççí ~~',
+
+              Text('॥ अवधूत चिंतन श्री गुरुदेव दत्त ॥',
                   style: TextStyle(
                       fontSize: _fsizeMangal,
                       fontWeight: FontWeight.bold,

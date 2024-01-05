@@ -44,37 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCe-aopM82NlfflAmlIlxq4clSolbQJN20',
-    appId: '1:1098524233550:web:60b38f162ef7f01f1d581f',
-    messagingSenderId: '1098524233550',
-    projectId: 'shripad-shrivallabh',
-    authDomain: 'shripad-shrivallabh.firebaseapp.com',
-    storageBucket: 'shripad-shrivallabh.appspot.com',
+    apiKey: 'AIzaSyDLCzqBM_UVGDl4pPHNSqgwpuewJSe-AAo',
+    appId: '1:315652197249:android:9182d8bde62650105a7680',
+    messagingSenderId: '315652197249',
+    projectId: 'shripad-shrivallabh-new',
+    authDomain: 'shripad-shrivallabh-new.firebaseapp.com',
+    storageBucket: 'shripad-shrivallabh-new.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDofm7Ze8oKZbBiGRpi1eZFee249_COtXE',
-    appId: '1:1098524233550:android:15aba8a55f4b86361d581f',
-    messagingSenderId: '1098524233550',
-    projectId: 'shripad-shrivallabh',
-    storageBucket: 'shripad-shrivallabh.appspot.com',
+    apiKey: 'AIzaSyDLCzqBM_UVGDl4pPHNSqgwpuewJSe-AAo',
+    appId: '1:315652197249:android:9182d8bde62650105a7680',
+    messagingSenderId: '315652197249',
+    projectId: 'shripad-shrivallabh-new',
+    storageBucket: 'shripad-shrivallabh-new.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDCf6f78AL7_NmAjaBhl7F_M-S1tuVu9Yw',
-    appId: '1:1098524233550:ios:2cec9b709ab971d51d581f',
-    messagingSenderId: '1098524233550',
-    projectId: 'shripad-shrivallabh',
-    storageBucket: 'shripad-shrivallabh.appspot.com',
-    iosBundleId: 'com.example.shripadShrivallabh',
+    apiKey: 'AIzaSyDR_m7LPe0doBnrsFkRI9Fc3qm4uFdBNRg',
+    appId: '1:315652197249:ios:1cedefe0cce4d05e5a7680',
+    messagingSenderId: '315652197249',
+    projectId: 'shripad-shrivallabh-new',
+    storageBucket: 'shripad-shrivallabh-new.appspot.com',
+    iosBundleId: 'com.shripadshrivallabh.charitramrut',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDCf6f78AL7_NmAjaBhl7F_M-S1tuVu9Yw',
-    appId: '1:1098524233550:ios:537c0ba1d479887a1d581f',
-    messagingSenderId: '1098524233550',
-    projectId: 'shripad-shrivallabh',
-    storageBucket: 'shripad-shrivallabh.appspot.com',
-    iosBundleId: 'com.example.shripadShrivallabh.RunnerTests',
+    apiKey: 'AIzaSyDLCzqBM_UVGDl4pPHNSqgwpuewJSe-AAo',
+    appId: '1:315652197249:android:9182d8bde62650105a7680',
+    messagingSenderId: '315652197249',
+    projectId: 'shripad-shrivallabh-new',
+    storageBucket: 'shripad-shrivallabh-new.appspot.com',
+    iosBundleId: 'com.shripadshrivallabh.charitramrut.RunnerTests',
   );
 }

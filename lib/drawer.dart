@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'drawer_item.dart';
 import 'drawer_items.dart';
+// ignore: depend_on_referenced_packages
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -38,6 +39,7 @@ class DrawerWidget extends StatelessWidget {
                                   children: <Widget>[
 
                 const Divider(),
+
                 ListTile(
                     leading: Icon(Icons.graphic_eq,
                         color: Colors.orange[900]),
@@ -80,6 +82,43 @@ class DrawerWidget extends StatelessWidget {
                           'https://play.google.com/store/apps/details?id=com.shripadshrivallabh.charitramrut');
 
                     }),
+                                    ListTile(
+                                        leading: Icon(Icons.apps,
+                                            color: Colors.orange[900]),
+                                        title: Text('आमचे इतर ऍप एक्सप्लोर करा ',
+                                            style: TextStyle(
+                                                color: Colors.orange[900],
+                                                fontWeight: FontWeight.bold)),
+                                        onTap: () {
+                                          // ignore: deprecated_member_use
+                                          launch(
+                                              'https://g.co/kgs/GKA8ow');
+
+                                        }),
+                                    ListTile(
+                                        leading: Icon(Icons.play_arrow,
+                                            color: Colors.orange[900]),
+                                        title: Text('श्रीपाद श्रीवल्लभ चरित्रमृत ऑडियो',
+                                            style: TextStyle(
+                                                color: Colors.orange[900],
+                                                fontWeight: FontWeight.bold)),
+                                      onTap: () {
+                                        // Show Snackbar at the middle of the screen when the ListTile is tapped
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                          const SnackBar(
+                                            content: Text('Coming soon'),
+
+                                            duration: Duration(seconds: 2),
+                                            backgroundColor: Colors.black54,
+                                            behavior: SnackBarBehavior.floating,
+
+                                            margin: EdgeInsets.all(100.0), // Adjust margin to position the Snackbar
+                                          ),
+                                        );
+
+                                        // Perform any other action you want to take when the ListTile is tapped
+                                        // ...
+                                      }),
                                   ],
                                 )),
           ],
