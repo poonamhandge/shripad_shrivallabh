@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'theme_provider.dart';
 
 class Abhay extends StatefulWidget {
   final VoidCallback openDrawer;
@@ -17,7 +19,7 @@ class _Abhay extends State<Abhay> {
   final double _baseFontSize = 20;
   double _fontScale = 1;
   double _baseFontScale = 1;
-
+  late ThemeData currentTheme;
   @override
   void initState() {
     if (kDebugMode) {
@@ -52,6 +54,7 @@ class _Abhay extends State<Abhay> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
         onScaleStart: (ScaleStartDetails scaleStartDetails) {
           _baseFontScale = _fontScale;
@@ -73,7 +76,8 @@ class _Abhay extends State<Abhay> {
         },
         child: Scaffold(
           appBar: AppBar(
-              backgroundColor: Colors.orange[400],
+              // backgroundColor: Colors.orange[400],
+              backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange[400],
               leading: GestureDetector(
                   onTap: () {
                     widget.openDrawer();

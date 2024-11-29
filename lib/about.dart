@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'theme_provider.dart';
 
 class About extends StatelessWidget {
   const About({super.key});
 
   @override
+
   Widget build(BuildContext context) {
+    late ThemeData currentTheme;
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
           title: const Text('श्रीपाद श्रीवल्लभ चरित्रामृत',
@@ -12,6 +17,7 @@ class About extends StatelessWidget {
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Varun')),
+          backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange[400],
           actions: const <Widget>[]),
       body: Padding(
         padding: const EdgeInsets.all(30.00),

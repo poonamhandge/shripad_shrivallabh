@@ -3,9 +3,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:provider/provider.dart';
 import 'details.dart';
 import 'todo.dart';
+import 'theme_provider.dart';
 
 
 
@@ -13,7 +14,8 @@ class ChapterScreen extends StatefulWidget {
   final List<Todo> todos;
   final VoidCallback openDrawer;
 
-  const ChapterScreen({super.key, required this.todos, required this.openDrawer});
+
+  const ChapterScreen({super.key, required this.todos, required this.openDrawer,});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -23,12 +25,14 @@ class ChapterScreen extends StatefulWidget {
 class _ChapterScreenState extends State<ChapterScreen> {
   late SharedPreferences prefs;
   Map<int, bool> readState = {};
+  late ThemeData currentTheme;
 
   @override
   void initState() {
     super.initState();
     // Load the saved read states from SharedPreferences when the screen is created.
     loadReadStates();
+
   }
 
   void loadReadStates() async {
@@ -39,25 +43,44 @@ class _ChapterScreenState extends State<ChapterScreen> {
       }
     });
   }
+  void toggleTheme() {
+    setState(() {
+      currentTheme = currentTheme.brightness == Brightness.dark ? lightTheme : darkTheme;
+      // Save the theme preference if needed
+      saveThemePreference(currentTheme.brightness);
+    });
+  }
+  void saveThemePreference(Brightness brightness) async {
+    prefs.setBool('isDarkTheme', brightness == Brightness.dark);
+  }
   @override
 
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
       // backgroundColor: Colors.orange[100],
       appBar: AppBar(
-        backgroundColor: Colors.orange[400],
+        backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange[400],
 
         leading: GestureDetector(
             onTap: () {
 
               widget.openDrawer();
             },
-            child: const Icon(
-              Icons.menu, // add custom icons also
-            )),
-        title: const Text('श्रीपाद श्रीवल्लभ चरित्रामृत',
-            style: TextStyle(fontWeight: FontWeight.bold)),
+          child: Icon(
+            Icons.menu, // Menu icon color will be based on theme
+          ),),
+        title:  Text('श्रीपाद श्रीवल्लभ चरित्रामृत',
+            style: TextStyle(fontWeight: FontWeight.bold,)),
+        actions: [
+          IconButton(
+            icon: Icon(themeProvider.isDarkTheme ? Icons.wb_sunny : Icons.dark_mode_rounded),
+            onPressed: () {
+              themeProvider.toggleTheme(); // Toggle the theme on button press
+            },
+          ),
+        ],
       ),
 
         body: ListView.builder(
@@ -68,7 +91,8 @@ class _ChapterScreenState extends State<ChapterScreen> {
               padding: const EdgeInsets.all(0.0),
               child: Card(
                 surfaceTintColor: Colors.orangeAccent,
-                color: Colors.orange[50],
+                color: themeProvider.isDarkTheme ? Colors.orange[50] : Colors.amber[50],
+                // color: Colors.orange[100],
                 child: ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 5.0),
 
@@ -82,7 +106,7 @@ class _ChapterScreenState extends State<ChapterScreen> {
 
                     child: Text(
                       widget.todos[index].title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Varun',
@@ -104,10 +128,14 @@ class _ChapterScreenState extends State<ChapterScreen> {
                     ),
                   ),
                   onTap: () {
+                    Color detailTextColor = themeProvider.isDarkTheme ? Colors.white : Colors.black;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailScreen(todo: widget.todos[index]),
+                        builder: (context) => DetailScreen(
+                          todo: widget.todos[index],
+                          textColor: detailTextColor, // Pass the text color
+                        ),
                       ),
                     );
                   },
@@ -142,7 +170,8 @@ class _ChapterScreenState extends State<ChapterScreen> {
 
       floatingActionButton: FloatingActionButton(
         tooltip: ('बुकमार्क केलेला अध्याय उघडा'),
-          backgroundColor: Colors.orange,
+          // backgroundColor: Colors.orange,
+          backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange,
           child: const Icon(
 
           Icons.bookmark,
@@ -173,5 +202,20 @@ class _ChapterScreenState extends State<ChapterScreen> {
     );
   }
 
+  final ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: Colors.black,
+    textTheme: const TextTheme(
+      bodyMedium: TextStyle(color: Colors.white),
+    ),
+  );
 
+  final ThemeData lightTheme = ThemeData(
+    primarySwatch: Colors.orange,
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: Colors.white,
+    textTheme: const TextTheme(
+      bodyMedium: TextStyle(color: Colors.black),
+    ),
+  );
 }

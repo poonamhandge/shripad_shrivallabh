@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'theme_provider.dart';
 
 
 
@@ -14,9 +15,9 @@ import 'todo.dart';
 class DetailScreen extends StatefulWidget {
   // Declare a field that holds the Todo.
   final Todo todo;
+  final Color textColor;
 
-
-  const DetailScreen({super.key, required this.todo});
+  const DetailScreen({super.key, required this.todo,this.textColor = Colors.black,});
 
 
   @override
@@ -83,6 +84,8 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     // Use the Todo to create the UI.
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    Color descriptionTextColor = themeProvider.isDarkTheme ? Colors.white : Colors.black;
 
     return GestureDetector(
         onScaleStart: (ScaleStartDetails scaleStartDetails) {
@@ -105,7 +108,7 @@ class _DetailScreenState extends State<DetailScreen> {
         },
         child: Scaffold(
             appBar: AppBar(
-                backgroundColor: Colors.orange[400],
+                backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange[400],
                 title: Text(widget.todo.title,
                     style: const TextStyle(
                         fontSize: 22,
@@ -155,8 +158,9 @@ class _DetailScreenState extends State<DetailScreen> {
                   const Text('\n\n'),
                   Text(
                     widget.todo.description,
-                    style: TextStyle(fontFamily: 'Varun', fontSize: _fsize),
+                    style: TextStyle(fontFamily: 'Varun', fontSize: _fsize,color: descriptionTextColor,),
                     textAlign: TextAlign.justify,
+
 
 
                   ),
@@ -187,7 +191,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                 );
               },
-              backgroundColor: Colors.orange,
+              backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange,
               child: const Icon(
                 Icons.bookmark_border,
                 color: Colors.white,

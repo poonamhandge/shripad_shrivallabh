@@ -2,11 +2,12 @@ import 'about.dart';
 
 
 import 'package:flutter/material.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'drawer_item.dart';
 import 'drawer_items.dart';
 // ignore: depend_on_referenced_packages
 import 'package:url_launcher/url_launcher.dart';
+import 'theme_provider.dart';
 
 
 
@@ -16,6 +17,7 @@ class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key, required this.onSelectedItem});
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
+
         child: Column(
           children: [
             const DrawerHeader(
@@ -102,23 +104,11 @@ class DrawerWidget extends StatelessWidget {
                                             style: TextStyle(
                                                 color: Colors.orange[900],
                                                 fontWeight: FontWeight.bold)),
-                                      onTap: () {
-                                        // Show Snackbar at the middle of the screen when the ListTile is tapped
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(
-                                            content: Text('Coming soon'),
-
-                                            duration: Duration(seconds: 2),
-                                            backgroundColor: Colors.black54,
-                                            behavior: SnackBarBehavior.floating,
-
-                                            margin: EdgeInsets.all(100.0), // Adjust margin to position the Snackbar
-                                          ),
-                                        );
-
-                                        // Perform any other action you want to take when the ListTile is tapped
-                                        // ...
-                                      }),
+                                      onTap: () async {
+                                        // ignore: deprecated_member_use
+                                        launch(
+                                            'https://play.google.com/store/apps/details?id=com.staticgsm.shripad_shrivallabh&hl=en&gl=US');
+                                      },),
                                   ],
                                 )),
           ],
@@ -130,6 +120,7 @@ class DrawerWidget extends StatelessWidget {
   // SingleChildScrollView
 
   Widget buildDrawItems(BuildContext context) => Column(
+
         children: DrawerItems.all
             .map((item) => ListTile(
                   contentPadding: const EdgeInsets.only(left: 24, top: 8),

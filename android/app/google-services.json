@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "315652197249",
+    "project_id": "shripad-shrivallabh-new",
+    "storage_bucket": "shripad-shrivallabh-new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315652197249:android:9182d8bde62650105a7680",
+        "android_client_info": {
+          "package_name": "com.shripadshrivallabh.charitramrut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315652197249-6ot6nmq97njom0ifu9r8kmbnb21fru84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLCzqBM_UVGDl4pPHNSqgwpuewJSe-AAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "315652197249-6ot6nmq97njom0ifu9r8kmbnb21fru84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+
+

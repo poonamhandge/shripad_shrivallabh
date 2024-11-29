@@ -1,4 +1,6 @@
+import 'package:charitramrut/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Stotram extends StatelessWidget {
   final VoidCallback openDrawer;
@@ -6,9 +8,10 @@ class Stotram extends StatelessWidget {
   const Stotram({Key? key, required this.openDrawer}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.orange[400],
+          backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange[400],
           leading: GestureDetector(
               onTap: () {
                 openDrawer();

@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+import 'theme_provider.dart';
 
 class SiddhaMangal extends StatefulWidget {
   final VoidCallback openDrawer;
@@ -43,6 +45,7 @@ class _SiddhaMangalState extends State<SiddhaMangal> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
         onScaleStart: (ScaleStartDetails scaleStartDetails) {
           _baseFontScale = _fontScale;
@@ -64,7 +67,7 @@ class _SiddhaMangalState extends State<SiddhaMangal> {
         },
         child: Scaffold(
           appBar: AppBar(
-              backgroundColor: Colors.orange[400],
+              backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange[400],
               leading: GestureDetector(
                   onTap: () {
                     widget.openDrawer();

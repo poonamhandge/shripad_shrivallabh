@@ -3,11 +3,14 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'theme_provider.dart';
 import 'arti.dart';
 import 'drawer_items.dart';
 import 'firebase_options.dart';
 
+import 'onboarding .dart';
 import 'parayan.dart';
 import 'phal.dart';
 import 'sidhamangal.dart';
@@ -30,7 +33,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 // void main() => runApp(const MyApp());
 void main() async {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -50,6 +58,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late AppUpdateInfo _updateInfo;
+  bool isDarkTheme = false;
 
 
 
@@ -109,20 +118,60 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
-        title: 'श्रीपाद श्रीवल्लभ चरित्रामृत ',
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
-          primaryColor: Colors.orange,
-        ),
-        home: const MainPage());
+      title: 'श्रीपाद श्रीवल्लभ चरित्रामृत',
+      theme: themeProvider.isDarkTheme ? darkTheme : lightTheme,
+
+      home: FutureBuilder<bool>(
+        future: isFirstTimeUser(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator(); // Show a loading indicator while checking
+          }
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+          if (snapshot.data == true) {
+            return  App(); // Show onboarding screen for new users
+          } else {
+            return  MainPage(); // Show home screen for returning users
+          }
+        },
+      ),
+    );
+  }
+  final ThemeData lightTheme = ThemeData(
+    primarySwatch: Colors.orange,
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: Colors.white,
+
+  );
+
+  final ThemeData darkTheme = ThemeData(
+    // brightness: Brightness.dark,
+    scaffoldBackgroundColor: Colors.grey[900],
+    // textTheme: TextTheme(
+    //   bodyMedium: TextStyle(color: Colors.white),
+    //
+    // ),
+  );
+
+  Future<bool> isFirstTimeUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstTime = prefs.getKeys().isEmpty;
+    print('isFirstTime: $isFirstTime');
+    return isFirstTime;
   }
 }
 
 class MainPage extends StatefulWidget {
+
   // ignore: use_super_parameters
-  const MainPage({key}) : super(key: key);
+  const MainPage({Key? key, }) : super(key: key);
+
 
   @override
   // ignore: library_private_types_in_public_api
@@ -137,7 +186,7 @@ class _MainPageState extends State<MainPage> {
   bool isDragging = false;
   bool isDrawerOpen = false;
   DrawerItem item = DrawerItems.home;
-
+  bool isDarkTheme = false;
   @override
   void initState() {
     super.initState();
@@ -332,6 +381,7 @@ class _MainPageState extends State<MainPage> {
 
               )),
           openDrawer: openDrawer,
+
         );
 
       default:
@@ -347,6 +397,7 @@ class _MainPageState extends State<MainPage> {
                 '$i',
               )),
           openDrawer: openDrawer,
+
 
         );
 

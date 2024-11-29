@@ -1,6 +1,8 @@
+import 'package:charitramrut/theme_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 class Uddhar extends StatefulWidget {
   final VoidCallback openDrawer;
@@ -57,6 +59,7 @@ class _Uddhar extends State<Uddhar> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
         onScaleStart: (ScaleStartDetails scaleStartDetails) {
           _baseFontScale = _fontScale;
@@ -78,7 +81,7 @@ class _Uddhar extends State<Uddhar> {
         },
         child: Scaffold(
           appBar: AppBar(
-              backgroundColor: Colors.orange[400],
+              backgroundColor: themeProvider.isDarkTheme ? Colors.orange[200] : Colors.orange[400],
               leading: GestureDetector(
                   onTap: () {
                     widget.openDrawer();
