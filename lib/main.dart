@@ -2,7 +2,6 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'theme_provider.dart';
@@ -137,7 +136,7 @@ class _MyAppState extends State<MyApp> {
           if (snapshot.data == true) {
             return  App(); // Show onboarding screen for new users
           } else {
-            return  MainPage(); // Show home screen for returning users
+            return  const MainPage(); // Show home screen for returning users
           }
         },
       ),
@@ -159,13 +158,19 @@ class _MyAppState extends State<MyApp> {
     // ),
   );
 
+
   Future<bool> isFirstTimeUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isFirstTime = prefs.getKeys().isEmpty;
+    // Check if a specific flag/key is present to determine if the user is first time
+    bool isFirstTime = prefs.getBool('isFirstTime') ?? true;  // Default to true if the key doesn't exist
+    if (isFirstTime) {
+      prefs.setBool('isFirstTime', false);  // Set the flag to false once onboarding is shown
+    }
     print('isFirstTime: $isFirstTime');
     return isFirstTime;
   }
 }
+
 
 class MainPage extends StatefulWidget {
 
@@ -290,6 +295,7 @@ class _MainPageState extends State<MainPage> {
     return PopScope(
 
       canPop: false,
+      // ignore: deprecated_member_use
       onPopInvoked: (didPop) async {
         if (isDrawerOpen) {
           closeDrawer();

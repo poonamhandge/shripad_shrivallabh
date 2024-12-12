@@ -7,7 +7,6 @@ import 'drawer_item.dart';
 import 'drawer_items.dart';
 // ignore: depend_on_referenced_packages
 import 'package:url_launcher/url_launcher.dart';
-import 'theme_provider.dart';
 
 
 
@@ -97,18 +96,18 @@ class DrawerWidget extends StatelessWidget {
                                               'https://g.co/kgs/GKA8ow');
 
                                         }),
-                                    ListTile(
-                                        leading: Icon(Icons.play_arrow,
-                                            color: Colors.orange[900]),
-                                        title: Text('श्रीपाद श्रीवल्लभ चरित्रमृत ऑडियो',
-                                            style: TextStyle(
-                                                color: Colors.orange[900],
-                                                fontWeight: FontWeight.bold)),
-                                      onTap: () async {
-                                        // ignore: deprecated_member_use
-                                        launch(
-                                            'https://play.google.com/store/apps/details?id=com.staticgsm.shripad_shrivallabh&hl=en&gl=US');
-                                      },),
+                                    // ListTile(
+                                    //     leading: Icon(Icons.play_arrow,
+                                    //         color: Colors.orange[900]),
+                                    //     title: Text('श्रीपाद श्रीवल्लभ चरित्रमृत ऑडियो',
+                                    //         style: TextStyle(
+                                    //             color: Colors.orange[900],
+                                    //             fontWeight: FontWeight.bold)),
+                                    //   onTap: () async {
+                                    //     // ignore: deprecated_member_use
+                                    //     launch(
+                                    //         'https://play.google.com/store/apps/details?id=com.staticgsm.shripad_shrivallabh&hl=en&gl=US');
+                                    //   },),
                                   ],
                                 )),
           ],
@@ -131,9 +130,16 @@ class DrawerWidget extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Varun',
                           color: Colors.brown[900])),
-                  onTap: () => onSelectedItem(item),
-
-                ))
+          onTap: () {
+            if (item.title == 'श्रीपाद श्रीवल्लभ चरित्रामृत ऑडियो') {
+              // ignore: deprecated_member_use
+              launch(
+                  'https://play.google.com/store/apps/details?id=com.staticgsm.shripad_shrivallabh&hl=en&gl=US');
+            } else {
+              onSelectedItem(item);
+            }
+          },
+        ))
             .toList(),
       );
 }

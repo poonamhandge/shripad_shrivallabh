@@ -5,6 +5,8 @@ class DrawerItems {
   static const home = DrawerItem(
       title: 'श्रीपाद श्रीवल्लभ चरित्रामृत अध्याय',
       icon: Icons.import_contacts);
+  static const audioapp = DrawerItem(
+      title: 'श्रीपाद श्रीवल्लभ चरित्रामृत ऑडियो', icon: Icons.get_app);
   static const stotra = DrawerItem(
       title: 'श्रीपाद श्रीवल्लभ स्तोत्रम् ', icon: Icons.text_snippet);
   static const arti =
@@ -24,6 +26,7 @@ class DrawerItems {
 
   static final List<DrawerItem> all = [
     home,
+    audioapp,
     stotra,
     arti,
     sidhhamangal,
